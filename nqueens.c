@@ -1,8 +1,8 @@
 #include <stdio.h>
+#include "board.h"
 
 int solve(int, int, int[][8]);
 int is_attacked(int, int, int, int[][8]);
-void print_board(int board[][8], int size);
 
 /**
  * main - call function to solve n queens
@@ -17,10 +17,10 @@ int main(void)
 	int board[8][8] = {0};
 
 	printf("starting board:\n");
-	print_board(board, n);
+	print_board(n, board);
 	solve(n, n, board);
 	printf("solved board:\n");
-	print_board(board, n);
+	print_board(n, board);
 
 	return (0);
 }
@@ -86,21 +86,4 @@ int is_attacked(int x, int y, int size, int board[][8])
 		}
 	}
 	return (0);
-}
-
-/**
- * print_board - prints the given board
- * @board: board to print
- * @size: size of board
- */
-void print_board(int board[][8], int size)
-{
-	int i, j;
-
-	for (i = 0; i < size; i++)
-	{
-		for (j = 0; j < size; j++)
-			printf("%d ", board[i][j]);
-		printf("\n");
-	}
 }
