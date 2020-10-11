@@ -10,7 +10,17 @@ class SudokuBoard(object):
     def generate_random_board(self):
         """Use random to generate random integers from 1-9
         """
-        return []
+        return [
+        [1,2,3,4,5,6,7,8,9],
+        [4,5,6,7,8,9,1,2,3],
+        [7,8,9,1,2,3,4,5,6],
+        [2,3,4,5,6,7,8,9,1],
+        [5,6,7,8,9,1,2,3,4],
+        [8,9,1,2,3,4,5,6,7],
+        [3,4,5,6,7,8,9,1,2],
+        [6,7,8,9,1,2,3,4,5],
+        [9,1,2,3,4,5,6,7,8]
+        ]
 
     def is_valid(self):
         """Check if board is valid
