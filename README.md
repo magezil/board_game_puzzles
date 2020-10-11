@@ -14,3 +14,8 @@
 
 #### knight_tour.c
 * knight visit each square of board exactly one time  
+
+### Sudoku
+#### sudoku.py
+* sudoku board
+  * verifies if a board is a valid sudoku board
