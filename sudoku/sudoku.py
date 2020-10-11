@@ -1,6 +1,16 @@
+from random import randint
+
 class SudokuBoard(object):
-    def __init__(self, board):
-        self.board = board
+    def __init__(self, board=None):
+        if board is None:
+            self.board = self.generate_random_board()
+        else:
+            self.board = board
+
+    def generate_random_board(self):
+        """Use random to generate random integers from 1-9
+        """
+        return []
 
     def is_valid(self):
         """Check if board is valid
