@@ -8,12 +8,24 @@ class SudokuBoard(object):
             self.board = board
 
     def __str__(self):
-        lines = []
+        """Return board as a string
+        """
+        lines = [''.join(['-' for i in range(9 + 2 + 10)])]
         for i in range(len(self.board)):
-            lines.append(' '.join(map(str, self.board[i])))
+            line = []
+            for k in range(len(self.board[i])):
+                if k != 0 and k % 3 == 0:
+                    line.append('|')
+                line.append(self.board[i][k])
+            if i != 0 and i % 3 == 0:
+                lines.append('------+-------+------')
+            lines.append(' '.join(map(str, line)))
+        lines.append(''.join(['-' for i in range(9 + 2 + 10)]))
         return str('\n'.join(lines))
 
     def __repr__(self):
+        """Return representation of sudoku board
+        """
         return {'board': self.board}
 
     def generate_random_board(self):
@@ -37,7 +49,7 @@ class SudokuBoard(object):
             check to see if board is solveable using solver
         """
         pass
-
+    
     def is_valid(self):
         """Check if board is valid
         """
