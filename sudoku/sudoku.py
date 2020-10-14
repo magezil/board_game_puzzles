@@ -1,6 +1,11 @@
+from random import randint, shuffle
+
 class SudokuBoard(object):
-    def __init__(self, board):
-        self.board = board
+    def __init__(self, board=None):
+        if not board:
+            self.board = self.generate_random_board()
+        else:
+            self.board = board
 
     def __str__(self):
         """Return board as a string
@@ -22,7 +27,7 @@ class SudokuBoard(object):
         """Return representation of sudoku board
         """
         return {'board': self.board}
-    
+
     def is_valid(self):
         """Check if board is valid
         """
@@ -58,19 +63,42 @@ class SudokuBoard(object):
                     return False
         return True
 
+    def generate_random_board(self):
+        """Use random to generate random integers from 1-9
+        """
+        print('Generating a random board')
+        nums = list(range(1, 10))
+        # TODO: try to make it more likely to get a valid board after write solver.
+        # Start with a random number in a random spot. Add random number and keep backtracking to see if still valid.
+        random_board = []
+        for _ in range(9):
+            # nums = [randint(1, 9) for i in range(9)]
+            shuffle(nums)
+            random_board.append(nums.copy())
+        return random_board
+
+    def generate_partially_board(self):
+        """Possibly generate a random board with some numbers missing
+        or have a bunch of pregenerated solveable boards
+        or write solver first, use the generate_random_board and delete some numbers,
+            check to see if board is solveable using solver
+        """
+        pass
+
+    def sudoku_solver(self):
+        """Solve a sudoku puzzle
+        """
+        # TODO
+        pass
+
 if __name__ == "__main__":
-    # TODO: add a random board generator
-    board = [
-        [1,2,3,4,5,6,7,8,9],
-        [4,5,6,7,8,9,1,2,3],
-        [7,8,9,1,2,3,4,5,6],
-        [2,3,4,5,6,7,8,9,1],
-        [5,6,7,8,9,1,2,3,4],
-        [8,9,1,2,3,4,5,6,7],
-        [3,4,5,6,7,8,9,1,2],
-        [6,7,8,9,1,2,3,4,5],
-        [9,1,2,3,4,5,6,7,8]
-        ]
-    sudoku = SudokuBoard(board)
+    sudoku = SudokuBoard()
     print(sudoku)
     print(sudoku.is_valid())
+
+    # count = 0
+    # while not sudoku.is_valid():
+    #     sudoku.board = sudoku.generate_random_board()
+    #     print(sudoku)
+    #     count += 1
+    #     print(count)
