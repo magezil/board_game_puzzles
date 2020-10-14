@@ -48,6 +48,7 @@ class SudokuBoard(object):
             for j in range(9):
                 nums[self.board[i][j]-1] += 1
                 if nums[self.board[i][j]-1] > 1:
+                    print(f'Row failed on {i}, {j}: {self.board[i][j]}')
                     return False
         
         # Check cols
@@ -56,6 +57,7 @@ class SudokuBoard(object):
             for j in range(9):
                 nums[self.board[j][i]-1] += 1
                 if nums[self.board[j][i]-1] > 1:
+                    print(f'Column failed on {j}, {i}: {self.board[j][i]}')
                     return False
 
         # Check 3x3 squares
@@ -64,6 +66,7 @@ class SudokuBoard(object):
             for j in range(9):
                 nums[self.board[j//3][j%3]-1] += 1
                 if nums[self.board[j//3][j%3]-1] > 1:
+                    print(f'Square failed on {j//3}, {j%3}: {self.board[j][i]}')
                     return False
         return True
 
@@ -74,7 +77,6 @@ class SudokuBoard(object):
         pass
 
 if __name__ == "__main__":
-
     sudoku = SudokuBoard()
     print(sudoku.__str__())
     print(sudoku.is_valid())
