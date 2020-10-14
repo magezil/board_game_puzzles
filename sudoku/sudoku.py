@@ -28,28 +28,6 @@ class SudokuBoard(object):
         """
         return {'board': self.board}
 
-    def generate_random_board(self):
-        """Use random to generate random integers from 1-9
-        """
-        print('Generating a random board')
-        # nums = list(range(1, 10))
-        # TODO: try to make it more likely to get a valid board after write solver.
-        # Start with a random number in a random spot. Add random number and keep backtracking to see if still valid.
-        random_board = []
-        for _ in range(9):
-            nums = [randint(1, 9) for i in range(9)]
-            # shuffle(nums)
-            random_board.append(nums.copy())
-        return random_board
-
-    def generate_partially_board(self):
-        """Possibly generate a random board with some numbers missing
-        or have a bunch of pregenerated solveable boards
-        or write solver first, use the generate_random_board and delete some numbers,
-            check to see if board is solveable using solver
-        """
-        pass
-    
     def is_valid(self):
         """Check if board is valid
         """
@@ -84,6 +62,28 @@ class SudokuBoard(object):
                     print(f'Square failed on {j//3}, {j%3}: {self.board[j][i]}')
                     return False
         return True
+
+    def generate_random_board(self):
+        """Use random to generate random integers from 1-9
+        """
+        print('Generating a random board')
+        nums = list(range(1, 10))
+        # TODO: try to make it more likely to get a valid board after write solver.
+        # Start with a random number in a random spot. Add random number and keep backtracking to see if still valid.
+        random_board = []
+        for _ in range(9):
+            # nums = [randint(1, 9) for i in range(9)]
+            shuffle(nums)
+            random_board.append(nums.copy())
+        return random_board
+
+    def generate_partially_board(self):
+        """Possibly generate a random board with some numbers missing
+        or have a bunch of pregenerated solveable boards
+        or write solver first, use the generate_random_board and delete some numbers,
+            check to see if board is solveable using solver
+        """
+        pass
 
     def sudoku_solver(self):
         """Solve a sudoku puzzle
