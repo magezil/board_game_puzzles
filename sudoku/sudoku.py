@@ -1,4 +1,4 @@
-from random import shuffle
+from random import randint, shuffle
 
 class SudokuBoard(object):
     def __init__(self, board=None):
@@ -20,10 +20,13 @@ class SudokuBoard(object):
         """Use random to generate random integers from 1-9
         """
         print('Generating a random board')
-        nums = list(range(1, 10))
+        # nums = list(range(1, 10))
+        # TODO: try to make it more likely to get a valid board after write solver.
+        # Start with a random number in a random spot. Add random number and keep backtracking to see if still valid.
         random_board = []
         for _ in range(9):
-            shuffle(nums)
+            nums = [randint(1, 9) for i in range(9)]
+            # shuffle(nums)
             random_board.append(nums.copy())
         return random_board
 
@@ -78,5 +81,12 @@ class SudokuBoard(object):
 
 if __name__ == "__main__":
     sudoku = SudokuBoard()
-    print(sudoku.__str__())
+    print(sudoku)
     print(sudoku.is_valid())
+
+    # count = 0
+    # while not sudoku.is_valid():
+    #     sudoku.board = sudoku.generate_random_board()
+    #     print(sudoku)
+    #     count += 1
+    #     print(count)
